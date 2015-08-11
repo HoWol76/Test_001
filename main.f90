@@ -1,7 +1,11 @@
 program main
+    use mod_greet
     implicit none
     integer :: i
-    print *, "Hello World"
+    character(len=20) :: cname
+    call get_environment_variable("USER", cname)
+
+    call greet(cname)
 
     do i = 1, 5
         write(*, '(A, I2, A)') "In iteration ", i, " of the loop."

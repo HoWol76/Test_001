@@ -5,6 +5,7 @@ LOPTS=-g -O0
 
 SRCFILES=$(wildcard *.f90)
 OBJFILES=$(patsubst %.f90,%.o,$(SRCFILES))
+MODFILES=$(patsubst %.f90,%.o,$(wildcard mod*.f90))
 
 default : test
 
@@ -22,6 +23,8 @@ test : $(OBJFILES)
 debug :
 	@echo "SRCFILES = $(SRCFILES)"
 	@echo "OBJFILES = $(OBJFILES)"
+
+main.o : $(MODFILES)
 
 .SUFFIXES :
 .SUFFIXES : .f90 .o
