@@ -1,7 +1,7 @@
 program main
     use mod_greet
     implicit none
-    integer :: i, j
+    integer :: i
     character(len=20) :: cname
     call get_environment_variable("USER", cname)
 
