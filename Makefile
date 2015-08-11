@@ -5,17 +5,21 @@ LOPTS=-g -O0
 
 SRCFILES=$(wildcard *.f90)
 OBJFILES=$(patsubst %.f90,%.o,$(SRCFILES))
-MODFILES=$(patsubst %.f90,%.o,$(wildcard mod*.f90))
+MODFILES=$(patsubst %.f90,%.mod,$(wildcard mod*.f90))
+
+TARGETS=test
 
 default : test
 
-all : test
+all : $(TARGETS)
 
 clean :
-	rm -rf $(OBJFILES)
+	rm -rf $(OBJFILES) $(MODFILES) $(TARGETS)
 
 $(OBJFILES) : %.o : %.f90
-	$(FC) $(COPTS) -o $@ $^
+	$(FC) $(COPTS) -o $@ $<
+
+$(MODFILES) : %.mod : %.o
 
 test : $(OBJFILES)
 	$(LD) $(LOPTS) -o $@ $^
@@ -23,6 +27,8 @@ test : $(OBJFILES)
 debug :
 	@echo "SRCFILES = $(SRCFILES)"
 	@echo "OBJFILES = $(OBJFILES)"
+	@echo "MODFILES = $(MODFILES)"
+	@echo "TARGETS = $(TARGETS)"
 
 main.o : $(MODFILES)
 
