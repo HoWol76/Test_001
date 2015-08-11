@@ -5,5 +5,6 @@ program main
 
     do i = 1, 5
         write(*, '(A, I2, A)') "In iteration ", i, " of the loop."
+    end do
 
 end program main
