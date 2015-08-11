@@ -7,7 +7,7 @@ program main
 
     print *, greet(cname)
 
-    do i = 1, 5
+    do i = 1, 3
         write(*, '(A, I2, A)') "In iteration ", i, " of the loop."
     end do
 
