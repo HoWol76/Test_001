@@ -1,10 +1,11 @@
 module mod_greet
     implicit none
 contains
-    subroutine greet(cname)
+    function greet(cname)
         implicit none
         character(len=*), intent(in) :: cname
-        write(*, '(3A)') "Hello ", trim(cname), "!"
-    end subroutine greet
+        character(len=len_trim(cname) + len("Hello !")) :: greet
+        greet = "Hello " // trim(cname) // "!"
+    end function greet
 end module mod_greet
 

@@ -1,7 +1,7 @@
 FC=gfortran
 LD=$(FC)
-COPTS=-g -O0 -c
-LOPTS=-g -O0
+COPTS=-g -O0 -c -Wall
+LOPTS=-g -O0 -Wall
 
 SRCFILES=$(wildcard *.f90)
 OBJFILES=$(patsubst %.f90,%.o,$(SRCFILES))
